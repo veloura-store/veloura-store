@@ -851,7 +851,7 @@ textarea.form-control {
 /* Navbar Dropdown */
 .nav-dropdown {
   position: relative;
-  display: inline-block;
+  display: none !important; /* Hidden from public header */
 }
 
 .nav-dropdown-menu {
