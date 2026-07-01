@@ -89,12 +89,12 @@ button {
 .container {
   max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 var(--spacing-sm);
+  padding: 0 1.5rem;
 }
 
 @media(min-width: 768px) {
   .container {
-    padding: 0 var(--spacing-md);
+    padding: 0 4rem;
   }
 }
 
