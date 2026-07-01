@@ -329,13 +329,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Save to localStorage (now with public URLs instead of huge base64 strings)
-            const result = ProductStore.addProduct(productData);
+            const result = await ProductStore.addProduct(productData);
             if (result) {
                 showToast(`"${result.name}" added to the collection!`, 'success');
                 form.reset();
                 imgWrap.innerHTML = '';
                 imgBase64.value = '[]';
-                renderQuick();
+                await renderQuick();
             } else {
                 showToast('Failed to add product. Try again.', 'error');
             }
@@ -350,8 +350,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ── Quick preview ───────────────────────────────────────────
-    function renderQuick() {
-        const products = ProductStore.getProducts();
+    async function renderQuick() {
+        const products = await ProductStore.getProducts();
         const recent   = [...products].reverse().slice(0, 5);
         quickTitle.textContent = `In Store (${products.length})`;
         quickBody.innerHTML = '';

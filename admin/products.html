@@ -198,8 +198,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPage   = 1;
 
     // ── Render ──────────────────────────────────────────────────
-    function renderProducts(query = '', page = 1) {
-        const all = ProductStore.searchProducts(query);
+    async function renderProducts(query = '', page = 1) {
+        const all = await ProductStore.searchProducts(query);
         currentPage = page;
         const total = all.length;
         const pages = Math.ceil(total / PER_PAGE);
@@ -275,11 +275,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function attachListeners() {
         document.querySelectorAll('.btn-delete').forEach(btn => {
-            btn.addEventListener('click', () => {
+            btn.addEventListener('click', async () => {
                 if (confirm('Permanently delete this product?')) {
-                    ProductStore.deleteProduct(btn.dataset.id);
+                    await ProductStore.deleteProduct(btn.dataset.id);
                     showToast('Product deleted.', 'success');
-                    renderProducts(searchInput.value, currentPage);
+                    await renderProducts(searchInput.value, currentPage);
                 }
             });
         });
@@ -297,8 +297,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const imgBase64  = document.getElementById('editProdImageBase64');
     const imgWrap    = document.getElementById('editImagePreviewWrap');
 
-    function openEditModal(id) {
-        const p = ProductStore.getProductById(id);
+    async function openEditModal(id) {
+        const p = await ProductStore.getProductById(id);
         if (!p) { showToast('Product not found.', 'error'); return; }
 
         document.getElementById('editProdId').value        = p.id;
@@ -350,23 +350,69 @@ document.addEventListener('DOMContentLoaded', () => {
         renderImgPreviews(b64);
     });
 
-    editForm.addEventListener('submit', e => {
+    editForm.addEventListener('submit', async e => {
         e.preventDefault();
         const id = document.getElementById('editProdId').value;
-        const updated = {
-            name         : document.getElementById('editProdName').value,
-            price        : parseFloat(document.getElementById('editProdPrice').value),
-            affiliateLink: document.getElementById('editProdAffiliate').value,
-            description  : document.getElementById('editProdDesc').value,
-            images       : JSON.parse(imgBase64.value || '[]')
-        };
-        const result = ProductStore.updateProduct(id, updated);
-        if (result) {
-            showToast(`"${result.name}" updated.`, 'success');
-            closeEditModal();
-            renderProducts(searchInput.value, currentPage);
-        } else {
-            showToast('Could not update product.', 'error');
+        const submitBtn = editForm.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.innerHTML;
+
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span style="opacity:0.7">Saving...</span>';
+
+        try {
+            const files = Array.from(imgInput.files).slice(0, 10);
+            let imageUrls = [];
+
+            if (files.length > 0) {
+                if (window.supabaseClient) {
+                    submitBtn.innerHTML = '<span style="opacity:0.7">Uploading Images...</span>';
+                    const uploadPromises = files.map(async (file) => {
+                        const fileExt = file.name.split('.').pop();
+                        const fileName = `${Date.now()}_${Math.random().toString(36).substring(2)}.${fileExt}`;
+                        const filePath = `${fileName}`;
+                        const { data, error } = await window.supabaseClient.storage
+                            .from('products')
+                            .upload(filePath, file);
+                        if (error) throw error;
+                        const { data: { publicUrl } } = window.supabaseClient.storage
+                            .from('products')
+                            .getPublicUrl(filePath);
+                        return publicUrl;
+                    });
+                    imageUrls = await Promise.all(uploadPromises);
+                } else {
+                    imageUrls = JSON.parse(imgBase64.value || '[]');
+                }
+            } else {
+                imageUrls = JSON.parse(imgBase64.value || '[]');
+            }
+
+            const updated = {
+                name         : document.getElementById('editProdName').value.trim(),
+                price        : parseFloat(document.getElementById('editProdPrice').value),
+                affiliateLink: document.getElementById('editProdAffiliate').value.trim(),
+                description  : document.getElementById('editProdDesc').value.trim(),
+                images       : imageUrls
+            };
+
+            if (imageUrls.length > 0) {
+                updated.image = imageUrls[0];
+            }
+
+            const result = await ProductStore.updateProduct(id, updated);
+            if (result) {
+                showToast(`"${result.name}" updated.`, 'success');
+                closeEditModal();
+                await renderProducts(searchInput.value, currentPage);
+            } else {
+                showToast('Could not update product.', 'error');
+            }
+        } catch (err) {
+            console.error('Error during update:', err);
+            showToast('Failed to update product. ' + (err.message || ''), 'error');
+        } finally {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnText;
         }
     });
 

@@ -4,7 +4,7 @@
  * connecting to productStore.js (localStorage backend).
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     // Determine which page we are on
     const productGrid = document.getElementById('frontendProductGrid');
     const productDetailWrap = document.getElementById('frontendProductDetail');
@@ -15,31 +15,31 @@ document.addEventListener('DOMContentLoaded', () => {
     setupNavbarAuth();
 
     if (productGrid) {
-        renderProducts(productGrid);
+        await renderProducts(productGrid);
     } 
     
     if (homeProductGrid) {
-        renderProducts(homeProductGrid, { limit: 4 });
+        await renderProducts(homeProductGrid, { limit: 4 });
     }
 
     if (productDetailWrap) {
-        loadProductDetail();
+        await loadProductDetail();
         if (relatedProductGrid) {
             const urlParams = new URLSearchParams(window.location.search);
             const currentId = urlParams.get('id');
-            renderProducts(relatedProductGrid, { limit: 4, excludeId: currentId });
+            await renderProducts(relatedProductGrid, { limit: 4, excludeId: currentId });
         }
     }
 });
 
-function renderProducts(gridContainer, options = {}) {
+async function renderProducts(gridContainer, options = {}) {
     // Assuming ProductStore is loaded
     if (typeof ProductStore === 'undefined') {
         console.error("ProductStore is not loaded.");
         return;
     }
 
-    let products = ProductStore.getProducts();
+    let products = await ProductStore.getProducts();
 
     if (options.excludeId) {
         products = products.filter(p => p.id !== options.excludeId);
@@ -134,7 +134,7 @@ function renderProducts(gridContainer, options = {}) {
     });
 }
 
-function loadProductDetail() {
+async function loadProductDetail() {
     if (typeof ProductStore === 'undefined') {
         console.error("ProductStore is not loaded.");
         return;
@@ -148,7 +148,7 @@ function loadProductDetail() {
         return;
     }
 
-    const product = ProductStore.getProductById(productId);
+    const product = await ProductStore.getProductById(productId);
 
     if (!product) {
         document.getElementById('productDetailTitle').textContent = "Product Not Found";

@@ -193,8 +193,8 @@
 <script src="../js/productStore.js"></script>
 <script src="../js/admin.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const products = ProductStore.getProducts();
+document.addEventListener('DOMContentLoaded', async () => {
+    const products = await ProductStore.getProducts();
 
     // Stats
     document.getElementById('statTotalProducts').textContent = products.length;
