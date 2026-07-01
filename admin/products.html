@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products — Veloura Admin</title>
+    <meta name="description" content="Manage all Veloura Bags products — view, edit, and delete.">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="admin-wrapper">
+
+    <!-- ═══ Sidebar ═══ -->
+    <aside class="admin-sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">Veloura <span>Admin</span></div>
+        </div>
+        <div class="sidebar-body">
+            <div class="sidebar-section">
+                <div class="sidebar-label">Main</div>
+                <ul class="sidebar-menu">
+                    <li><a href="dashboard.html">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+                        Dashboard
+                    </a></li>
+                    <li><a href="products.html" class="active">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                        Products
+                    </a></li>
+                    <li><a href="add-product.html">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"/></svg>
+                        Add Product
+                    </a></li>
+                    <li><a href="orders.html">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                        Orders
+                    </a></li>
+                    <li><a href="users.html">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                        Users
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="sidebar-footer">
+            <div class="sidebar-user">
+                <div class="sidebar-avatar admin-initial">A</div>
+                <div class="sidebar-user-info">
+                    <div class="sidebar-user-name admin-name-display">Admin</div>
+                    <div class="sidebar-user-role">Administrator</div>
+                </div>
+            </div>
+            <button type="button" class="logout-btn" id="logoutBtn">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+                Sign Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- ═══ Main ═══ -->
+    <main class="admin-main">
+        <header class="admin-topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle" style="display:none;" aria-label="Menu">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+                <div class="topbar-breadcrumb">
+                    <span>Veloura</span>
+                    <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    <strong>Products</strong>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <a href="../pages/home.html" class="topbar-store-link">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    View Store
+                </a>
+                <div class="topbar-divider"></div>
+                <span class="topbar-name admin-name-display">Admin</span>
+                <div class="topbar-avatar admin-initial">A</div>
+            </div>
+        </header>
+
+        <div class="admin-content">
+
+            <div class="page-header">
+                <div class="page-header-text">
+                    <div class="page-meta">Collection Management</div>
+                    <h1>All Products</h1>
+                    <p>Manage your curated selection of leather goods.</p>
+                </div>
+                <a href="add-product.html" class="btn btn-primary btn-sm">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                    Add Product
+                </a>
+            </div>
+
+            <div class="table-card">
+                <div class="table-header">
+                    <div>
+                        <h3><span id="productCount">0</span> Products</h3>
+                    </div>
+                    <div class="table-actions">
+                        <div class="search-wrap">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                            <input type="text" id="searchProduct" class="search-input" placeholder="Search by name…">
+                        </div>
+                    </div>
+                </div>
+
+                <div style="overflow-x:auto;">
+                    <table class="admin-table" id="productTable">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Price</th>
+                                <th>Affiliate</th>
+                                <th>Added</th>
+                                <th style="text-align:right;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productTableBody"></tbody>
+                    </table>
+                </div>
+
+                <div class="pagination" id="paginationBar" style="display:none;">
+                    <span id="paginationInfo" style="color:var(--text-secondary);"></span>
+                    <div class="pagination-pages" id="paginationPages"></div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</div>
+
+<!-- ═══ Edit Product Modal ═══ -->
+<div class="modal-overlay" id="editModal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3>Edit Product</h3>
+            <button class="modal-close" id="editModalClose" aria-label="Close">×</button>
+        </div>
+        <form id="editProductForm">
+            <input type="hidden" id="editProdId">
+            <div class="form-group">
+                <label for="editProdName">Product Name *</label>
+                <input type="text" id="editProdName" class="form-control" required placeholder="e.g. Classic Leather Tote">
+            </div>
+            <div class="form-row-2">
+                <div class="form-group">
+                    <label for="editProdPrice">Price ($) *</label>
+                    <input type="number" step="0.01" min="0" id="editProdPrice" class="form-control" required placeholder="149.99">
+                </div>
+                <div class="form-group">
+                    <label for="editProdAffiliate">Affiliate Link</label>
+                    <input type="url" id="editProdAffiliate" class="form-control" placeholder="https://...">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="editProdDesc">Description</label>
+                <textarea id="editProdDesc" class="form-control" rows="3" placeholder="Describe the product…"></textarea>
+            </div>
+            <div class="form-group">
+                <label>Product Images (up to 10)</label>
+                <div class="upload-zone" id="editUploadZone">
+                    <input type="file" id="editProdImage" accept="image/*" multiple>
+                    <div class="upload-zone-icon">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    </div>
+                    <p>Click or drag images here</p>
+                    <span>PNG, JPG, WEBP up to 10MB each</span>
+                </div>
+                <input type="hidden" id="editProdImageBase64" value="[]">
+                <div class="image-preview-grid" id="editImagePreviewWrap"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-ghost btn-sm" id="editCancelBtn">Cancel</button>
+                <button type="submit" class="btn btn-primary btn-sm">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="../js/productStore.js"></script>
+<script src="../js/admin.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const tbody       = document.getElementById('productTableBody');
+    const searchInput = document.getElementById('searchProduct');
+    const countEl     = document.getElementById('productCount');
+    const pageBar     = document.getElementById('paginationBar');
+    const pageInfo    = document.getElementById('paginationInfo');
+    const pagesEl     = document.getElementById('paginationPages');
+    const PER_PAGE    = 10;
+    let currentPage   = 1;
+
+    // ── Render ──────────────────────────────────────────────────
+    function renderProducts(query = '', page = 1) {
+        const all = ProductStore.searchProducts(query);
+        currentPage = page;
+        const total = all.length;
+        const pages = Math.ceil(total / PER_PAGE);
+        const slice = all.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+
+        countEl.textContent = total;
+        tbody.innerHTML = '';
+
+        if (total === 0) {
+            tbody.innerHTML = `<tr><td colspan="5">
+                <div class="empty-state">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>
+                    <h4>No products found</h4>
+                    <p>Try a different search or <a href="add-product.html" style="color:var(--accent);font-weight:600;">add a new product</a>.</p>
+                </div>
+            </td></tr>`;
+            pageBar.style.display = 'none';
+            return;
+        }
+
+        slice.forEach(p => {
+            const baseImg = (p.images && p.images.length > 0) ? p.images[0] : (p.image || '');
+            const imgUrl  = baseImg ? (baseImg.startsWith('http') || baseImg.startsWith('data:') ? baseImg : '../' + baseImg) : '';
+            const hasLink = p.affiliateLink && p.affiliateLink.trim();
+            const dateStr = p.createdAt ? new Date(p.createdAt).toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' }) : '—';
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>
+                    <div class="product-name-cell">
+                        <img src="${imgUrl}" alt="${p.name}" class="product-thumb"
+                             onerror="this.src='https://placehold.co/48x48/F2F1ED/999999?text=VL'">
+                        <div class="product-name-text">
+                            <strong>${p.name}</strong>
+                            <small>${p.description ? p.description.slice(0,44) + (p.description.length > 44 ? '…' : '') : 'No description'}</small>
+                        </div>
+                    </div>
+                </td>
+                <td><strong>$${p.price.toFixed(2)}</strong></td>
+                <td>${hasLink ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-neutral">None</span>'}</td>
+                <td style="color:var(--text-secondary); font-size:0.8125rem;">${dateStr}</td>
+                <td>
+                    <div class="action-btns" style="justify-content:flex-end;">
+                        <button class="action-btn btn-edit" data-id="${p.id}" title="Edit">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                        </button>
+                        <button class="action-btn btn-delete" data-id="${p.id}" title="Delete">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                        </button>
+                    </div>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        // Pagination
+        if (pages > 1) {
+            pageBar.style.display = 'flex';
+            pageInfo.textContent = `Showing ${(page-1)*PER_PAGE+1}–${Math.min(page*PER_PAGE, total)} of ${total}`;
+            pagesEl.innerHTML = '';
+            for (let i = 1; i <= pages; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'page-btn' + (i === page ? ' active' : '');
+                btn.textContent = i;
+                btn.addEventListener('click', () => renderProducts(searchInput.value, i));
+                pagesEl.appendChild(btn);
+            }
+        } else {
+            pageBar.style.display = 'none';
+        }
+
+        attachListeners();
+    }
+
+    function attachListeners() {
+        document.querySelectorAll('.btn-delete').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (confirm('Permanently delete this product?')) {
+                    ProductStore.deleteProduct(btn.dataset.id);
+                    showToast('Product deleted.', 'success');
+                    renderProducts(searchInput.value, currentPage);
+                }
+            });
+        });
+        document.querySelectorAll('.btn-edit').forEach(btn => {
+            btn.addEventListener('click', () => openEditModal(btn.dataset.id));
+        });
+    }
+
+    searchInput.addEventListener('input', () => renderProducts(searchInput.value, 1));
+
+    // ── Edit Modal ───────────────────────────────────────────────
+    const modal      = document.getElementById('editModal');
+    const editForm   = document.getElementById('editProductForm');
+    const imgInput   = document.getElementById('editProdImage');
+    const imgBase64  = document.getElementById('editProdImageBase64');
+    const imgWrap    = document.getElementById('editImagePreviewWrap');
+
+    function openEditModal(id) {
+        const p = ProductStore.getProductById(id);
+        if (!p) { showToast('Product not found.', 'error'); return; }
+
+        document.getElementById('editProdId').value        = p.id;
+        document.getElementById('editProdName').value      = p.name;
+        document.getElementById('editProdPrice').value     = p.price;
+        document.getElementById('editProdAffiliate').value = p.affiliateLink || '';
+        document.getElementById('editProdDesc').value      = p.description   || '';
+        imgInput.value = '';
+
+        const imgs = p.images || (p.image ? [p.image] : []);
+        imgBase64.value = JSON.stringify(imgs);
+        renderImgPreviews(imgs);
+
+        modal.classList.add('open');
+    }
+
+    function closeEditModal() {
+        modal.classList.remove('open');
+        editForm.reset();
+        imgWrap.innerHTML = '';
+        imgBase64.value = '[]';
+    }
+
+    function renderImgPreviews(arr) {
+        imgWrap.innerHTML = '';
+        arr.forEach(src => {
+            const img = document.createElement('img');
+            img.src = src.startsWith('http') || src.startsWith('data:') ? src : '../' + src;
+            img.onerror = () => img.src = 'https://placehold.co/70x70/F2F1ED/999?text=VL';
+            imgWrap.appendChild(img);
+        });
+    }
+
+    document.getElementById('editModalClose').addEventListener('click', closeEditModal);
+    document.getElementById('editCancelBtn').addEventListener('click', closeEditModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeEditModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeEditModal(); });
+
+    imgInput.addEventListener('change', async e => {
+        const files = Array.from(e.target.files).slice(0, 10);
+        if (!files.length) { imgBase64.value = '[]'; imgWrap.innerHTML = ''; return; }
+        const b64 = await Promise.all(files.map(f => new Promise((res, rej) => {
+            const r = new FileReader();
+            r.onload  = ev => res(ev.target.result);
+            r.onerror = rej;
+            r.readAsDataURL(f);
+        })));
+        imgBase64.value = JSON.stringify(b64);
+        renderImgPreviews(b64);
+    });
+
+    editForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const id = document.getElementById('editProdId').value;
+        const updated = {
+            name         : document.getElementById('editProdName').value,
+            price        : parseFloat(document.getElementById('editProdPrice').value),
+            affiliateLink: document.getElementById('editProdAffiliate').value,
+            description  : document.getElementById('editProdDesc').value,
+            images       : JSON.parse(imgBase64.value || '[]')
+        };
+        const result = ProductStore.updateProduct(id, updated);
+        if (result) {
+            showToast(`"${result.name}" updated.`, 'success');
+            closeEditModal();
+            renderProducts(searchInput.value, currentPage);
+        } else {
+            showToast('Could not update product.', 'error');
+        }
+    });
+
+    renderProducts();
+});
+</script>
+</body>
+</html>

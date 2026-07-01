@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login — Veloura</title>
+    <meta name="description" content="Sign in to the Veloura admin panel to manage your store.">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<div class="auth-page">
+
+    <!-- ── Left: Form ──────────────────────── -->
+    <div class="auth-panel">
+        <div class="auth-card">
+
+            <div class="auth-brand">
+                <div class="auth-brand-logo">Veloura</div>
+                <div class="auth-brand-tag">Admin Portal</div>
+            </div>
+
+            <h1>Welcome back</h1>
+            <p>Sign in to manage your curated collection.</p>
+
+            <div id="loginAlert" class="alert"></div>
+
+            <form id="loginForm" novalidate>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" class="form-control"
+                           placeholder="admin@veloura.com" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control"
+                           placeholder="••••••••" required autocomplete="current-password">
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block" id="loginSubmitBtn">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/></svg>
+                    Sign In
+                </button>
+            </form>
+
+            <div class="auth-divider">or</div>
+
+            <div class="auth-links">
+                Don't have an account? <a href="signup.html">Create account</a>
+            </div>
+            <div class="auth-links" style="margin-top:0.75rem;">
+                <a href="../pages/home.html" style="font-size:0.8125rem; color:var(--text-light); border-bottom-color:var(--border-color);">
+                    ← Back to store
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+
+    <!-- ── Right: Visual ────────────────────── -->
+    <div class="auth-visual">
+        <img src="../assets/bag_evening.png"
+             alt="Veloura luxury bags">
+        <div class="auth-visual-overlay">
+            <div class="auth-visual-text">
+                <h2>The Art of Carrying</h2>
+                <p>Manage your curated collection of bespoke leather goods.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="../js/admin.js"></script>
+</body>
+</html>

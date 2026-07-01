@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users — Veloura Admin</title>
+    <meta name="description" content="Manage admin accounts and team permissions.">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="admin-wrapper">
+
+    <!-- ═══ Sidebar ═══ -->
+    <aside class="admin-sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">Veloura <span>Admin</span></div>
+        </div>
+        <div class="sidebar-body">
+            <div class="sidebar-section">
+                <div class="sidebar-label">Main</div>
+                <ul class="sidebar-menu">
+                    <li><a href="dashboard.html">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+                        Dashboard
+                    </a></li>
+                    <li><a href="products.html">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                        Products
+                    </a></li>
+                    <li><a href="add-product.html">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"/></svg>
+                        Add Product
+                    </a></li>
+                    <li><a href="orders.html">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                        Orders
+                    </a></li>
+                    <li><a href="users.html" class="active">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                        Users
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="sidebar-footer">
+            <div class="sidebar-user">
+                <div class="sidebar-avatar admin-initial">A</div>
+                <div class="sidebar-user-info">
+                    <div class="sidebar-user-name admin-name-display">Admin</div>
+                    <div class="sidebar-user-role">Administrator</div>
+                </div>
+            </div>
+            <button type="button" class="logout-btn" id="logoutBtn">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+                Sign Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- ═══ Main ═══ -->
+    <main class="admin-main">
+        <header class="admin-topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle" style="display:none;" aria-label="Menu">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+                <div class="topbar-breadcrumb">
+                    <span>Veloura</span>
+                    <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    <strong>Users</strong>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <a href="../pages/home.html" class="topbar-store-link">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    View Store
+                </a>
+                <div class="topbar-divider"></div>
+                <span class="topbar-name admin-name-display">Admin</span>
+                <div class="topbar-avatar admin-initial">A</div>
+            </div>
+        </header>
+
+        <div class="admin-content">
+            <div class="page-header">
+                <div class="page-header-text">
+                    <div class="page-meta">Administration</div>
+                    <h1>Team & Users</h1>
+                    <p>Manage access to your admin portal.</p>
+                </div>
+            </div>
+
+            <div class="table-card">
+                <div class="table-header">
+                    <div>
+                        <h3><span id="userCount">0</span> Users</h3>
+                    </div>
+                </div>
+
+                <div style="overflow-x:auto;">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Joined</th>
+                                <th style="text-align:right;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="userTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="../js/admin.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const tbody = document.getElementById('userTableBody');
+    const uCount = document.getElementById('userCount');
+
+    // Combine default admin + created admins
+    const users = [ { name: 'Super Admin', email: 'admin@veloura.com', date: '2026-01-01' } ];
+    const stored = JSON.parse(localStorage.getItem('adminUsers') || '[]');
+    const all = [...users, ...stored];
+
+    uCount.textContent = all.length;
+
+    all.forEach(u => {
+        const tr = document.createElement('tr');
+        const role = u.email === 'admin@veloura.com' ? '<span class="badge badge-success">Owner</span>' : '<span class="badge badge-info">Admin</span>';
+        const jDate = u.date ? new Date(u.date).toLocaleDateString('en-US', {month:'short', day:'numeric', year:'numeric'}) : 'Recently';
+
+        tr.innerHTML = `
+            <td>
+                <div class="user-cell">
+                    <div class="user-avatar-cell">${u.name.charAt(0).toUpperCase()}</div>
+                    <strong>${u.name}</strong>
+                </div>
+            </td>
+            <td><span style="color:var(--text-secondary);">${u.email}</span></td>
+            <td>${role}</td>
+            <td style="color:var(--text-light); font-size:0.8125rem;">${jDate}</td>
+            <td style="text-align:right;">
+                ${u.email === 'admin@veloura.com' ? '' : `
+                <button class="action-btn btn-delete" data-email="${u.email}" title="Remove Access">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                </button>
+                `}
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+
+    document.querySelectorAll('.btn-delete').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (confirm('Revoke access for this user?')) {
+                const em = btn.dataset.email;
+                const updated = stored.filter(x => x.email !== em);
+                localStorage.setItem('adminUsers', JSON.stringify(updated));
+                showToast('User removed successfully.', 'success');
+                setTimeout(() => location.reload(), 1000);
+            }
+        });
+    });
+});
+</script>
+</body>
+</html>

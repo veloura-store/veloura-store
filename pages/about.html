@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Veloura</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container nav-container">
+            <a href="home.html" class="logo">Veloura</a>
+            <nav class="desktop-nav">
+                <a href="home.html">Home</a>
+                <a href="products.html">Shop</a>
+                <a href="about.html" class="active">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <div class="search-bar">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <input type="text" placeholder="Search curated selection...">
+                </div>
+                <a href="checkout.html" class="nav-icon" aria-label="Cart">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                </a>
+                
+                <!-- Auth Dropdown Setup -->
+                <div class="nav-dropdown" id="navAuthDropdown">
+                    <button class="nav-icon" id="navAuthBtn" aria-label="Account">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    </button>
+                    <div class="nav-dropdown-menu" id="navAuthMenu">
+                        <!-- Dynamic content injected by frontend.js -->
+                    </div>
+                </div>
+
+                <button class="nav-icon mobile-menu-btn" aria-label="Menu">
+                   <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section class="container section-padding pb-0 slide-up">
+            <div class="about-grid">
+                <div class="about-hero" style="text-align: left;">
+                    <div class="t-meta mb-sm">Our Story</div>
+                    <h1 class="t-display mb-md">Curating the<br>Essential</h1>
+                    <p class="t-large" style="color:var(--text-secondary); max-width: 400px;">Veloura is a story of slow elegance, of uncovering perfection in the craft, and creating objects that naturally belong in your life.</p>
+                </div>
+                <div class="about-image" style="aspect-ratio: 4/5;">
+                    <img src="../assets/bag_mini.png" alt="Bag Display" style="height: 100%; object-fit: cover;">
+                    <div style="background: white; padding: 1.5rem; position: absolute; bottom: 0; left: 0; max-width: 250px; z-index:2;">
+                        <h5 style="font-family: var(--font-serif); font-size: 1.25rem;">The bag is the anchor to the silhouette.</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Philosophy -->
+        <section class="section-padding bg-secondary mt-xl slide-up delay-1">
+            <div class="container text-center" style="max-width: 800px;">
+                <h2 class="t-h2 mb-md">The Veloura Philosophy</h2>
+                <p class="mb-sm" style="color:var(--text-secondary); font-size: 1.125rem;">Our name is the promise of refinement. It stems from an obsession with the tactile universe. We design and curate bags that are equally practical as they are breathtaking.</p>
+                <p style="color:var(--text-secondary); font-size: 1.125rem;">We empower our community to make conscious choices through transparent supply chains and enduring designs. We are Veloura. Your essential canvas.</p>
+            </div>
+        </section>
+
+        <!-- Staggered Content -->
+        <section class="container section-padding slide-up delay-2">
+            
+            <div class="about-grid mb-xl" style="align-items: center;">
+                <div style="max-width: 400px;">
+                    <h3 class="t-h3 mb-sm">Ethical Sourcing</h3>
+                    <p style="color:var(--text-secondary);">We partner directly with tanneries that adhere strictly to sustainable practices. From plant-based dyes to water recycling systems, every piece of leather has a respectful genesis.</p>
+                </div>
+                <div class="about-image" style="aspect-ratio: 16/11;">
+                    <img src="../assets/leather_working.png" alt="Leather Working" style="height: 100%; object-fit: cover;">
+                </div>
+            </div>
+
+            <div class="about-grid" style="align-items: center; direction: rtl;">
+                <div style="max-width: 400px; direction: ltr;">
+                    <h3 class="t-h3 mb-sm">Architectural Integrity</h3>
+                    <p style="color:var(--text-secondary);">We approach bag design like architecture. Form must support function perfectly. We pare away the unnecessary to reveal the core geometry that supports everyday life.</p>
+                </div>
+                <div class="about-image" style="aspect-ratio: 4/5; direction: ltr;">
+                    <img src="../assets/bag_tote.png" alt="Walking with tote" style="height: 100%; object-fit: cover;">
+                </div>
+            </div>
+
+        </section>
+
+        <!-- CTA -->
+        <section class="section-padding text-center">
+            <div class="container" style="position:relative;">
+                <h1 style="font-size: clamp(4rem, 10vw, 12rem); font-family: var(--font-serif); color: var(--bg-secondary); position: absolute; top:50%; left:50%; transform: translate(-50%, -50%); z-index:-1; white-space:nowrap;">VELOURA</h1>
+                <h2 class="t-h2 mb-md">Enter the Gallery</h2>
+                <p style="color:var(--text-secondary); max-width: 500px; margin: 0 auto 2rem;">Explore our latest collections and find the definitive art piece for your journey ahead.</p>
+                <a href="products.html" class="btn btn-primary">Shop The Collection</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="home.html" class="logo">Veloura</a>
+                    <p>Discover luxury refined. Our curated collection of artisan handbags merges sculptural form with timeless utility.</p>
+                </div>
+                <div>
+                    <h5 class="footer-heading">Discover</h5>
+                    <ul class="footer-links">
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="products.html">Shop All</a></li>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="contact.html">Journal</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="footer-heading">Legal & Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Returns</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2024 Veloura. As an Amazon Associate, we earn from qualifying purchases.</div>
+                <div style="display:flex; gap:1rem;">
+                    <a href="#">Instagram</a>
+                    <a href="#">Pinterest</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/frontend.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

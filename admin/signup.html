@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account — Veloura Admin</title>
+    <meta name="description" content="Create a new Veloura admin account.">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<div class="auth-page">
+
+    <!-- ── Left: Form ──────────────────────── -->
+    <div class="auth-panel">
+        <div class="auth-card">
+
+            <div class="auth-brand">
+                <div class="auth-brand-logo">Veloura</div>
+                <div class="auth-brand-tag">Admin Portal</div>
+            </div>
+
+            <h1>Create account</h1>
+            <p>Join the Veloura admin team to manage the collection.</p>
+
+            <div id="signupAlert" class="alert"></div>
+
+            <form id="signupForm" novalidate>
+                <div class="form-group">
+                    <label for="name">Full name</label>
+                    <input type="text" id="name" class="form-control"
+                           placeholder="Your full name" required autocomplete="name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" class="form-control"
+                           placeholder="you@veloura.com" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control"
+                           placeholder="Min. 6 characters" required autocomplete="new-password" minlength="6">
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm password</label>
+                    <input type="password" id="confirmPassword" class="form-control"
+                           placeholder="Repeat your password" required autocomplete="new-password">
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block" id="signupSubmitBtn">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"/></svg>
+                    Create Account
+                </button>
+            </form>
+
+            <div class="auth-divider">or</div>
+
+            <div class="auth-links">
+                Already have an account? <a href="login.html">Sign in</a>
+            </div>
+            <div class="auth-links" style="margin-top:0.75rem;">
+                <a href="../pages/home.html" style="font-size:0.8125rem; color:var(--text-light); border-bottom-color:var(--border-color);">
+                    ← Back to store
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Right: Visual ────────────────────── -->
+    <div class="auth-visual">
+        <img src="../assets/bag_tote.png"
+             alt="Veloura luxury bags">
+        <div class="auth-visual-overlay">
+            <div class="auth-visual-text">
+                <h2>Curate with Purpose</h2>
+                <p>Help shape the future of Veloura's bespoke leather collection.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="../js/admin.js"></script>
+<script>
+// Extra: confirm password client validation
+document.getElementById('signupForm').addEventListener('submit', function(e) {
+    const pw  = document.getElementById('password').value;
+    const cpw = document.getElementById('confirmPassword').value;
+    if (pw !== cpw) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        const alertBox = document.getElementById('signupAlert');
+        alertBox.textContent = '❌ Passwords do not match.';
+        alertBox.className = 'alert error';
+    }
+}, true);
+</script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Veloura</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .checkout-layout { display: grid; grid-template-columns: 1fr; gap: var(--spacing-lg); }
+        @media(min-width: 992px) { .checkout-layout { grid-template-columns: 1.5fr 1fr; } }
+        .order-summary { background: white; padding: var(--spacing-md); border-radius: 8px; position: sticky; top: 100px; }
+        .summary-item { display: flex; justify-content: space-between; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color); }
+        .summary-item:last-child { border-bottom: none; }
+        .summary-img { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    <header class="site-header" style="border-bottom: 1px solid var(--border-color);">
+        <div class="container nav-container" style="justify-content: center;">
+            <a href="home.html" class="logo">Veloura</a>
+        </div>
+    </header>
+
+    <main class="container section-padding pb-lg">
+        <h1 class="t-h2 mb-md text-center">Secure Checkout</h1>
+        
+        <div class="checkout-layout">
+            <!-- Left Form -->
+            <div class="contact-form slide-up">
+                <h3 class="t-h3 mb-sm">1. Shipping Details</h3>
+                <form id="checkoutForm" action="#" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>First Name</label>
+                            <input type="text" id="firstName" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name</label>
+                            <input type="text" id="lastName" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-group mb-sm">
+                        <label>Address</label>
+                        <input type="text" id="address" class="form-control" placeholder="123 Luxury Ave" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>City</label>
+                            <input type="text" id="city" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Postal Code</label>
+                            <input type="text" id="postalCode" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <h3 class="t-h3 mb-sm mt-md">2. Payment Method</h3>
+                    <div class="form-group mb-sm">
+                        <label>Card Number</label>
+                        <input type="text" class="form-control" placeholder="0000 0000 0000 0000" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Expiry Date</label>
+                            <input type="text" class="form-control" placeholder="MM/YY" required>
+                        </div>
+                        <div class="form-group">
+                            <label>CVC</label>
+                            <input type="text" class="form-control" placeholder="123" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="btn btn-primary btn-block mt-md" style="font-size: 1rem;">Complete Order</button>
+                    <p class="t-meta text-center mt-sm">Transactions are secured and encrypted.</p>
+                </form>
+            </div>
+
+            <!-- Right Summary -->
+            <div class="order-summary slide-up delay-1">
+                <h4 class="mb-sm">Order Summary</h4>
+                
+                <div class="summary-item">
+                    <div style="display:flex; gap:1rem;">
+                        <img src="../assets/bag_tote.png" class="summary-img" alt="The Artisan Carryall">
+                        <div>
+                            <div style="font-weight: 500;">The Artisan Carryall</div>
+                            <div class="t-meta">Qty: 1</div>
+                        </div>
+                    </div>
+                    <div style="font-weight: 500;">$349.00</div>
+                </div>
+
+                <div class="summary-item" style="display:flex; flex-direction:column; gap:0.5rem;">
+                    <div style="display:flex; justify-content:space-between;">
+                        <span style="color:var(--text-secondary)">Subtotal</span>
+                        <span>$349.00</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between;">
+                        <span style="color:var(--text-secondary)">Shipping</span>
+                        <span>Complimentary</span>
+                    </div>
+                    <div style="display:flex; justify-content:space-between;">
+                        <span style="color:var(--text-secondary)">Tax</span>
+                        <span>$29.00</span>
+                    </div>
+                </div>
+
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-top: 1rem;">
+                    <span class="t-large" style="font-weight: 600;">Total</span>
+                    <span class="t-h3" style="font-family: var(--font-serif);">$378.00</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container text-center">
+            <p class="t-meta">&copy; 2024 Veloura. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Supabase CDN & Config -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-config.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkoutForm = document.getElementById('checkoutForm');
+            const submitBtn = document.getElementById('submitBtn');
+
+            if (checkoutForm) {
+                checkoutForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+
+                    // Check if supabaseClient is available
+                    if (!window.supabaseClient) {
+                        alert("Database configuration is missing. Please try again later.");
+                        return;
+                    }
+
+                    // Disable button to prevent double submission
+                    const originalBtnText = submitBtn.textContent;
+                    submitBtn.textContent = 'Processing...';
+                    submitBtn.disabled = true;
+
+                    // Get form values
+                    const orderData = {
+                        first_name: document.getElementById('firstName').value.trim(),
+                        last_name: document.getElementById('lastName').value.trim(),
+                        address: document.getElementById('address').value.trim(),
+                        city: document.getElementById('city').value.trim(),
+                        postal_code: document.getElementById('postalCode').value.trim(),
+                        total_amount: 378.00, // Hardcoded as per the summary for now
+                        status: 'Pending'
+                    };
+
+                    try {
+                        const { data, error } = await window.supabaseClient
+                            .from('orders')
+                            .insert([orderData]);
+
+                        if (error) {
+                            console.error('Supabase Error:', error);
+                            alert("There was an error placing your order: " + error.message);
+                            submitBtn.textContent = originalBtnText;
+                            submitBtn.disabled = false;
+                        } else {
+                            alert("Success! Your order has been placed.");
+                            window.location.href = 'home.html';
+                        }
+                    } catch (err) {
+                        console.error('Unexpected Error:', err);
+                        alert("An unexpected error occurred.");
+                        submitBtn.textContent = originalBtnText;
+                        submitBtn.disabled = false;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

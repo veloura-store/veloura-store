@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veloura | Curating the Essential</title>
+    <meta name="description" content="Discover luxury handcrafted bags. Our curated collection merges sculpture form with timeless utility.">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container nav-container">
+            <a href="home.html" class="logo">Veloura</a>
+            
+            <nav class="desktop-nav">
+                <a href="home.html" class="active">Home</a>
+                <a href="products.html">Shop</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <div class="nav-actions">
+                <div class="search-bar">
+                    <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <input type="text" placeholder="Search curated selection...">
+                </div>
+                <a href="checkout.html" class="nav-icon" aria-label="Cart">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                </a>
+                
+                <!-- Auth Dropdown Setup -->
+                <div class="nav-dropdown" id="navAuthDropdown">
+                    <button class="nav-icon" id="navAuthBtn" aria-label="Account">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    </button>
+                    <div class="nav-dropdown-menu" id="navAuthMenu">
+                        <!-- Dynamic content injected by frontend.js -->
+                    </div>
+                </div>
+
+                <button class="nav-icon mobile-menu-btn" aria-label="Menu">
+                   <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero container">
+            <div class="hero-grid slide-up">
+                <div class="hero-content">
+                    <div class="t-meta mb-sm">New Season Arrival</div>
+                    <h1 class="t-display hero-title">The Art of <br><i>Carrying</i></h1>
+                    <p class="hero-subtitle">Discover luxury redefined. Our curated collection of artisan handbags merges sculptural form with timeless utility.</p>
+                    <a href="products.html" class="btn btn-primary mt-sm">Shop now →</a>
+                </div>
+                <div class="hero-images delay-1">
+                    <div class="hero-image">
+                        <!-- Placeholder for hero image -->
+                        <img src="../assets/hero_luxury_bag.png" alt="Sculptural Handbag">
+                        <div class="hero-badge">
+                            <h4 class="t-small" style="font-weight:600;">"Sculptural Masters"</h4>
+                            <p class="t-meta mt-xs">As seen in Architectural Digest</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secondary Hero / Editorial -->
+        <section class="container mb-lg slide-up delay-2">
+            <div class="grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="hero-image" style="aspect-ratio: 4/5;">
+                     <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?q=80&w=800&auto=format&fit=crop" alt="The Obsidian Tote">
+                     <div class="hero-badge" style="background:transparent; color:white; left: 20px; bottom: 20px; text-shadow: 0 2px 4px rgba(0,0,0,0.5)">
+                         <div class="t-meta" style="color:white; border-bottom:1px solid white; display:inline-block; margin-bottom:0.5rem">Everyday Utility</div>
+                         <h3 class="t-h3" style="font-family: var(--font-serif)">The Obsidian Tote</h3>
+                         <a href="product-detail.html" class="btn btn-primary" style="background-color: white; color: black; padding: 0.5rem 1rem; margin-top:1rem; border-radius: 20px;">Explore More</a>
+                     </div>
+                </div>
+                <div style="display: grid; grid-template-rows: 1fr 1fr; gap: 1rem;">
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?q=80&w=800&auto=format&fit=crop" alt="Evening Clutches">
+                         <h4 style="position:absolute; bottom:20px; left:20px; color:white; font-family:var(--font-serif); font-size:1.5rem; text-shadow: 0 2px 4px rgba(0,0,0,0.5)">Evening Clutches</h4>
+                    </div>
+                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                         <div class="hero-image">
+                            <img src="https://images.unsplash.com/photo-1594223274512-ad4803739b7c?q=80&w=400&auto=format&fit=crop" alt="Mini Bags">
+                         </div>
+                         <div class="hero-image">
+                            <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?q=80&w=400&auto=format&fit=crop" alt="White Bag">
+                         </div>
+                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Curated Gallery -->
+        <section class="section-padding container">
+            <div class="text-center mb-lg">
+                <h2 class="t-h2" style="display:inline-block; position:relative; padding-bottom: 0.5rem;">
+                    The Curated Gallery
+                    <span style="position:absolute; bottom:0; left:50%; transform:translateX(-50%); width:40px; height:2px; background-color:currentColor;"></span>
+                </h2>
+            </div>
+            
+            <div class="collection-grid" id="homeProductGrid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="home.html" class="logo">Veloura</a>
+                    <p>Discover luxury refined. Our curated collection of artisan handbags merges sculptural form with timeless utility.</p>
+                </div>
+                <div>
+                    <h5 class="footer-heading">Discover</h5>
+                    <ul class="footer-links">
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="products.html">Shop All</a></li>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="contact.html">Journal</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="footer-heading">Legal & Support</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Returns</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>&copy; 2024 Veloura. As an Amazon Associate, we earn from qualifying purchases.</div>
+                <div style="display:flex; gap:1rem;">
+                    <a href="#">Instagram</a>
+                    <a href="#">Pinterest</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Supabase CDN & Config -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../js/supabase-config.js"></script>
+    
+    <script src="../js/productStore.js"></script>
+    <script src="../js/frontend.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders — Veloura Admin</title>
+    <meta name="description" content="View and manage customer orders for Veloura Bags.">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="admin-wrapper">
+
+    <!-- ═══ Sidebar ═══ -->
+    <aside class="admin-sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">Veloura <span>Admin</span></div>
+        </div>
+        <div class="sidebar-body">
+            <div class="sidebar-section">
+                <div class="sidebar-label">Main</div>
+                <ul class="sidebar-menu">
+                    <li><a href="dashboard.html">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+                        Dashboard
+                    </a></li>
+                    <li><a href="products.html">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                        Products
+                    </a></li>
+                    <li><a href="add-product.html">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16m8-8H4"/></svg>
+                        Add Product
+                    </a></li>
+                    <li><a href="orders.html" class="active">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                        Orders
+                    </a></li>
+                    <li><a href="users.html">
+                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+                        Users
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="sidebar-footer">
+            <div class="sidebar-user">
+                <div class="sidebar-avatar admin-initial">A</div>
+                <div class="sidebar-user-info">
+                    <div class="sidebar-user-name admin-name-display">Admin</div>
+                    <div class="sidebar-user-role">Administrator</div>
+                </div>
+            </div>
+            <button type="button" class="logout-btn" id="logoutBtn">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+                Sign Out
+            </button>
+        </div>
+    </aside>
+
+    <!-- ═══ Main ═══ -->
+    <main class="admin-main">
+        <header class="admin-topbar">
+            <div class="topbar-left">
+                <button class="menu-toggle" id="menuToggle" style="display:none;" aria-label="Menu">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+                <div class="topbar-breadcrumb">
+                    <span>Veloura</span>
+                    <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    <strong>Orders</strong>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <a href="../pages/home.html" class="topbar-store-link">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    View Store
+                </a>
+                <div class="topbar-divider"></div>
+                <span class="topbar-name admin-name-display">Admin</span>
+                <div class="topbar-avatar admin-initial">A</div>
+            </div>
+        </header>
+
+        <div class="admin-content">
+            <div class="page-header">
+                <div class="page-header-text">
+                    <div class="page-meta">Fulfillment</div>
+                    <h1>Orders</h1>
+                    <p>Review and manage all customer orders.</p>
+                </div>
+                <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                    <button class="btn btn-ghost btn-sm filter-btn active" data-filter="all">All</button>
+                    <button class="btn btn-ghost btn-sm filter-btn" data-filter="Pending">Pending</button>
+                    <button class="btn btn-ghost btn-sm filter-btn" data-filter="Shipped">Shipped</button>
+                    <button class="btn btn-ghost btn-sm filter-btn" data-filter="Delivered">Delivered</button>
+                    <button class="btn btn-ghost btn-sm filter-btn" data-filter="Cancelled">Cancelled</button>
+                </div>
+            </div>
+
+            <!-- Stats mini-row -->
+            <div class="stats-grid" style="grid-template-columns: repeat(4,1fr); margin-bottom:1.5rem;">
+                <div class="stat-card" style="flex-direction:row; align-items:center; padding:1.1rem 1.25rem; gap:1rem;">
+                    <div class="stat-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
+                    <div><div class="stat-label">Total</div><div class="stat-value" id="statTotal" style="font-size:1.5rem;">0</div></div>
+                </div>
+                <div class="stat-card delay-1" style="flex-direction:row; align-items:center; padding:1.1rem 1.25rem; gap:1rem;">
+                    <div class="stat-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+                    <div><div class="stat-label">Pending</div><div class="stat-value" id="statPending" style="font-size:1.5rem;">0</div></div>
+                </div>
+                <div class="stat-card delay-2" style="flex-direction:row; align-items:center; padding:1.1rem 1.25rem; gap:1rem;">
+                    <div class="stat-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg></div>
+                    <div><div class="stat-label">Shipped</div><div class="stat-value" id="statShipped" style="font-size:1.5rem;">0</div></div>
+                </div>
+                <div class="stat-card delay-3" style="flex-direction:row; align-items:center; padding:1.1rem 1.25rem; gap:1rem;">
+                    <div class="stat-icon"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+                    <div><div class="stat-label">Delivered</div><div class="stat-value" id="statDelivered" style="font-size:1.5rem;">0</div></div>
+                </div>
+            </div>
+
+            <div class="table-card">
+                <div class="table-header">
+                    <div>
+                        <h3><span id="orderCount">0</span> Orders</h3>
+                    </div>
+                    <div class="table-actions">
+                        <div class="search-wrap">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                            <input type="text" id="searchOrder" class="search-input" placeholder="Search orders or customers…">
+                        </div>
+                    </div>
+                </div>
+
+                <div style="overflow-x:auto;">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Date</th>
+                                <th>Items</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th style="text-align:right;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orderTableBody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- ═══ Order Detail Modal ═══ -->
+<div class="modal-overlay" id="orderModal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <h3 id="modalOrderId">Order Detail</h3>
+            <button class="modal-close" id="orderModalClose" aria-label="Close">×</button>
+        </div>
+        <div id="orderModalBody"></div>
+        <div class="modal-footer">
+            <label style="font-size:0.8125rem; font-weight:600; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.06em;">Update Status</label>
+            <select id="statusSelect" class="form-control" style="max-width:160px; padding:0.5rem 0.75rem;">
+                <option>Pending</option>
+                <option>Shipped</option>
+                <option>Delivered</option>
+                <option>Cancelled</option>
+            </select>
+            <button class="btn btn-primary btn-sm" id="saveStatusBtn">Save</button>
+        </div>
+    </div>
+</div>
+
+<script src="../js/admin.js"></script>
+<script>
+// Seed demo orders into localStorage if none exist
+(function seedOrders() {
+    if (localStorage.getItem('velouraOrders')) return;
+    const demo = [
+        { id:'ORD-8821', customer:'Amelia Harrison', email:'amelia@example.com', date:'2026-04-05', items:['The Artisan Carryall','Evening Envelope'], total:644.00, status:'Delivered' },
+        { id:'ORD-8820', customer:'Marcus Webb',     email:'marcus@example.com', date:'2026-04-04', items:['Riviera Woven Tote'],                    total:650.00, status:'Shipped'   },
+        { id:'ORD-8819', customer:'Sophia Chen',     email:'sophia@example.com', date:'2026-04-03', items:['Scarlet Chain Cross'],                   total:540.00, status:'Pending'   },
+        { id:'ORD-8818', customer:'James Fontaine',  email:'james@example.com',  date:'2026-04-02', items:['The Artisan Carryall'],                  total:349.00, status:'Cancelled' },
+        { id:'ORD-8817', customer:'Isabelle Moore',  email:'isabelle@example.com',date:'2026-04-01',items:['Evening Envelope','Scarlet Chain Cross'],total:835.00, status:'Delivered' },
+        { id:'ORD-8816', customer:'Lena Kaufmann',   email:'lena@example.com',   date:'2026-03-30', items:['Riviera Woven Tote'],                    total:650.00, status:'Pending'   },
+    ];
+    localStorage.setItem('velouraOrders', JSON.stringify(demo));
+})();
+
+document.addEventListener('DOMContentLoaded', () => {
+    let allOrders = JSON.parse(localStorage.getItem('velouraOrders') || '[]');
+    let activeFilter = 'all';
+    let currentOrderId = null;
+
+    const tbody      = document.getElementById('orderTableBody');
+    const searchIn   = document.getElementById('searchOrder');
+    const countEl    = document.getElementById('orderCount');
+
+    const statusBadge = s => {
+        const map = { Delivered:'badge-success', Pending:'badge-warning', Shipped:'badge-info', Cancelled:'badge-danger' };
+        return `<span class="badge ${map[s] || 'badge-neutral'}">${s}</span>`;
+    };
+
+    function renderOrders() {
+        const q = searchIn.value.toLowerCase();
+        let filtered = allOrders.filter(o => {
+            const matchFilter = activeFilter === 'all' || o.status === activeFilter;
+            const matchSearch = !q || o.id.toLowerCase().includes(q) || o.customer.toLowerCase().includes(q);
+            return matchFilter && matchSearch;
+        });
+        countEl.textContent = filtered.length;
+        tbody.innerHTML = '';
+
+        // Stats
+        document.getElementById('statTotal').textContent     = allOrders.length;
+        document.getElementById('statPending').textContent   = allOrders.filter(o=>o.status==='Pending').length;
+        document.getElementById('statShipped').textContent   = allOrders.filter(o=>o.status==='Shipped').length;
+        document.getElementById('statDelivered').textContent = allOrders.filter(o=>o.status==='Delivered').length;
+
+        if (!filtered.length) {
+            tbody.innerHTML = `<tr><td colspan="7"><div class="empty-state"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg><h4>No orders found</h4><p>Try adjusting your search or filter.</p></div></td></tr>`;
+            return;
+        }
+
+        filtered.forEach(o => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><strong style="font-family:var(--font-sans); font-size:0.8125rem;">${o.id}</strong></td>
+                <td>
+                    <div class="user-cell">
+                        <div class="user-avatar-cell">${o.customer.charAt(0).toUpperCase()}</div>
+                        <div><strong>${o.customer}</strong><small>${o.email}</small></div>
+                    </div>
+                </td>
+                <td style="color:var(--text-secondary); font-size:0.8125rem;">${new Date(o.date).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</td>
+                <td style="font-size:0.8125rem;">${o.items.length} item${o.items.length !== 1 ? 's' : ''}</td>
+                <td><strong>$${o.total.toFixed(2)}</strong></td>
+                <td>${statusBadge(o.status)}</td>
+                <td style="text-align:right;">
+                    <button class="btn btn-ghost btn-sm view-order" data-id="${o.id}" style="padding:0.4rem 0.85rem; font-size:0.7rem;">View</button>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        document.querySelectorAll('.view-order').forEach(btn => {
+            btn.addEventListener('click', () => openOrderModal(btn.dataset.id));
+        });
+    }
+
+    // Filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeFilter = btn.dataset.filter;
+            renderOrders();
+        });
+    });
+
+    searchIn.addEventListener('input', renderOrders);
+
+    // Modal
+    const modal   = document.getElementById('orderModal');
+    const modalId = document.getElementById('modalOrderId');
+    const modalBody = document.getElementById('orderModalBody');
+    const statusSel = document.getElementById('statusSelect');
+
+    function openOrderModal(id) {
+        currentOrderId = id;
+        const o = allOrders.find(x => x.id === id);
+        if (!o) return;
+        modalId.textContent = `Order ${o.id}`;
+        statusSel.value = o.status;
+        modalBody.innerHTML = `
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1.25rem;">
+                <div>
+                    <p style="font-size:0.65rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-light); margin-bottom:0.35rem;">Customer</p>
+                    <p style="font-weight:600;">${o.customer}</p>
+                    <p style="font-size:0.8125rem; color:var(--text-secondary);">${o.email}</p>
+                </div>
+                <div>
+                    <p style="font-size:0.65rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-light); margin-bottom:0.35rem;">Order Date</p>
+                    <p style="font-weight:600;">${new Date(o.date).toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})}</p>
+                </div>
+            </div>
+            <div style="margin-bottom:1.25rem; padding:1rem; background:var(--bg-primary); border-radius:var(--radius-sm); border:1px solid var(--border-color);">
+                <p style="font-size:0.65rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-light); margin-bottom:0.75rem;">Items (${o.items.length})</p>
+                ${o.items.map(item => `<div style="display:flex; justify-content:space-between; font-size:0.875rem; padding:0.35rem 0; border-bottom:1px solid var(--border-color);">
+                    <span>${item}</span>
+                </div>`).join('')}
+                <div style="display:flex; justify-content:space-between; font-size:0.9rem; font-weight:700; padding-top:0.75rem; margin-top:0.25rem;">
+                    <span>Total</span><span>$${o.total.toFixed(2)}</span>
+                </div>
+            </div>
+        `;
+        modal.classList.add('open');
+    }
+
+    document.getElementById('orderModalClose').addEventListener('click', () => {
+        modal.classList.remove('open');
+        currentOrderId = null;
+    });
+    modal.addEventListener('click', e => { if (e.target === modal) { modal.classList.remove('open'); currentOrderId = null; } });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { modal.classList.remove('open'); currentOrderId = null; } });
+
+    document.getElementById('saveStatusBtn').addEventListener('click', () => {
+        if (!currentOrderId) return;
+        const idx = allOrders.findIndex(o => o.id === currentOrderId);
+        if (idx === -1) return;
+        allOrders[idx].status = statusSel.value;
+        localStorage.setItem('velouraOrders', JSON.stringify(allOrders));
+        showToast(`Order ${currentOrderId} marked as ${statusSel.value}.`, 'success');
+        modal.classList.remove('open');
+        currentOrderId = null;
+        renderOrders();
+    });
+
+    renderOrders();
+});
+</script>
+</body>
+</html>
